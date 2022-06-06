@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  nginx-proxy:
+    container_name: nginx-proxy
+    hostname: nginx-proxy
+    image: nginx-proxy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /opt/nginx/sites-enabled/:/etc/nginx/sites-enabled
+      - /opt/nginx/conf.d/:/etc/nginx/conf.d
+      - /opt/nginx/ssl/:/etc/nginx/ssl
+      - /opt/nginx/logs/:/var/log/nginx/
+    networks:
+      - proxy-net
+    restart: always
+
+networks:
+  proxy-net:
+    driver: bridge
