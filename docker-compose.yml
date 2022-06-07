@@ -4,7 +4,7 @@ services:
   nginx-proxy:
     container_name: nginx-proxy
     hostname: nginx-proxy
-    image: nginx-proxy
+    build: .
     ports:
       - 80:80
       - 443:443
